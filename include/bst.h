@@ -5,13 +5,12 @@
 #include <vector>
 #include <fstream>
 #include <string>
-
 template <typename T>
 class BST {
  private:
-    struct Node {
+    struct Node { //Node - узел
         T value;
-        int counter;
+        int count;
         Node* left, * right;
     };
     int s;
@@ -20,47 +19,43 @@ class BST {
         if (!root) {
             root = new Node;
             root->value = value;
-            root->counter = 1;
+            root->count = 1;
             root->left = root->right = nullptr;
         } else if (root->value > value) {
             root->left = addNode(root->left, value);
         } else if (root->value < value) {
             root->right = addNode(root->right, value);
         } else {
-            root->counter++;
+            root->count++;
         }
         return root;
     }
- 
-    int max(int a, int b) {
+    int mymax(int a, int b) {
         if (a > b)
             return a;
         else
             return b;
     }
- 
     int depthTree(Node* root) {
         if (!root)
             return 0;
-        return max(depthTree(root->left), depthTree(root->right)) + 1;
+        return mymax(depthTree(root->left), depthTree(root->right)) + 1;
     }
- 
+
  public:
     BST() :root(nullptr), s(0) {}
     void add(const T& value) {
         root = addNode(root, value);
     }
- 
     int depth() {
         int d = depthTree(root);
         return d - 1;
     }
- 
+
     int search(const T& value) {
         searchTree(root, value);
         return s;
     }
- 
     void searchTree(Node* root, const T& value) {
         if (!root)
             s = 0;
@@ -69,7 +64,7 @@ class BST {
         else if (root->value < value)
             searchTree(root->right, value);
         else
-            s = root->counter;
+            s = root->count;
     }
 };
 
