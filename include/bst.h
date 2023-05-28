@@ -43,7 +43,7 @@ class BST {
         return max(depthTree(root->left), depthTree(root->right)) + 1;
     }
  public:
-    BST() :root(nullptr), s(0) {}
+    BST() :root(nullptr), r(0) {}
     void add(const T& value) {
         root = addNode(root, value);
     }
@@ -53,17 +53,17 @@ class BST {
     }
     int search(const T& value) {
         searchTree(root, value);
-        return s;
+        return r;
     }
     void searchTree(Node* root, const T& value) {
         if (!root)
-            s = 0;
+            r = 0;
         else if (root->value > value)
             searchTree(root->left, value);
         else if (root->value < value)
             searchTree(root->right, value);
         else
-            s = root->counter;
+            r = root->counter;
     }
 };
 BST<std::string> makeTree(const char* filename);
