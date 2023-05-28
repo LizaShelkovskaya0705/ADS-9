@@ -40,7 +40,7 @@ BST<std::string> makeTree(const char* filename) {
     return Mytree;
 }
 
-std::string corr_word(std::string s) {
+std::string corr_word(std::string r) {
     if (r[0] < '0' || r[0] > '9') {
         while ((r[0] >= 32 && r[0] <= 64) || (r[0] >= 91 && r[0] <= 96))
         r.erase(0, 1);
