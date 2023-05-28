@@ -8,7 +8,7 @@
 template <typename T>
 class BST {
  private:
-    struct Node { //Node - узел
+    struct Node {
         T value;
         int count;
         Node* left, * right;
