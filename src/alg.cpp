@@ -39,15 +39,16 @@ BST<std::string> makeTree(const char* filename) {
     }
     return Mytree;
 }
+
 std::string get_corr_word(std::string s) {
     if (s[0] < '0' || s[0] > '9') {
         while ((s[0] >= 32 && s[0] <= 64) || (s[0] >= 91 && s[0] <= 96))
         s.erase(0, 1);
         if (s != "") {
-            char ch = s[s.length() - 1];
-            while ((ch >= 32 && ch <= 64) || (ch >= 91 && ch <= 96)) {
+            char c = s[s.length() - 1];
+            while ((c >= 32 && c <= 64) || (c >= 91 && c <= 96)) {
                 s.pop_back();
-                ch = s[s.length() - 1];
+                c = s[s.length() - 1];
             }
         }
         int it = 0;
