@@ -46,7 +46,7 @@ std::string get_corr_word(std::string s) {
         s.erase(0, 1);
         if (s != "") {
             char ch = s[s.length() - 1];
-            while ((ch >= 32 && c <= 64) || (ch >= 91 && c <= 96)) {
+            while ((ch >= 32 && ch <= 64) || (ch >= 91 && ch <= 96)) {
                 s.pop_back();
                 ch = s[s.length() - 1];
             }
