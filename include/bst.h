@@ -67,5 +67,5 @@ class BST {
     }
 };
 BST<std::string> makeTree(const char* filename);
-std::string get_corr_word(std::string str);
+std::string corr_word(std::string str);
 #endif  // INCLUDE_BST_H_
