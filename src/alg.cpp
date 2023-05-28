@@ -6,40 +6,39 @@
 #include  "bst.h"
 
 BST<std::string> makeTree(const char* filename) {
-    BST<std::string> Mytree;
+  BST<std::string> Mytree;
     std::ifstream file(filename);
-    std::string w;
-    std::string w1 = "";
-    std::string w2 = "";
+    std::string p;
+    std::string p1 = "";
+    std::string p2 = "";
     while (!file.eof()) {
-        file >> w;
-        w1 = w2 = "";
-        if (w.find(",") != -1) {
-                int l = w.length();
-                int f = w.find(",");
-                if ((f != l - 1) && ((w[f + 1] >= 'A' && w[f + 1] <= 'Z') ||
-                    (w[f + 1] >= 'A' && w[f + 1] <= 'z'))) {
+        file >> p;
+        p1 = p2 = "";
+        if (p.find(",") != -1) {
+                int l = p.length();
+                int f = p.find(",");
+                if ((f != l - 1) && ((p[f + 1] >= 'A' && p[f + 1] <= 'Z') ||
+                    (p[f + 1] >= 'A' && p[f + 1] <= 'z'))) {
                 for (int i = 0; i < f; i++) {
-                    w1 += w[i];
+                    p1 += p[i];
                 }
                 for (int i = f+1; i < l; i++) {
-                    w2 += w[i];
+                    p2 += p[i];
                 }
             }
         }
-        if (w1 != "" && w2 != "") {
-            w1 = get_corr_word(w1);
-            w2 = get_corr_word(w2);
-            Mytree.add(w1);
-            Mytree.add(w2);
+        if (p1 != "" && p2 != "") {
+            p1 = get_corr_word(p1);
+            p2 = get_corr_word(p2);
+            Mytree.add(p1);
+            Mytree.add(p2);
         } else {
-            w = get_corr_word(w);
-            Mytree.add(w);
+            p = get_corr_word(p);
+            Mytree.add(p);
         }
     }
     return Mytree;
 }
-
 std::string get_corr_word(std::string s) {
     if (s[0] < '0' || s[0] > '9') {
         while ((s[0] >= 32 && s[0] <= 64) || (s[0] >= 91 && s[0] <= 96))
@@ -66,7 +65,7 @@ std::string get_corr_word(std::string s) {
                 s[i] = tolower(s[i]);
             }
         }
-    } else {
+        } else {
         s.clear();
     }
     return s;
