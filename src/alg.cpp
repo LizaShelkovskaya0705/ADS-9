@@ -39,7 +39,6 @@ BST<std::string> makeTree(const char* filename) {
     }
     return Mytree;
 }
-
 std::string get_corr_word(std::string s) {
     if (s[0] < '0' || s[0] > '9') {
         while ((s[0] >= 32 && s[0] <= 64) || (s[0] >= 91 && s[0] <= 96))
